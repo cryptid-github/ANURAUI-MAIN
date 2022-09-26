@@ -1,0 +1,63 @@
+.panelwrap{
+  &.open{
+    position: absolute;
+    top: 0;
+  }
+}
+  .expansion-header {
+    background-color: transparent;
+    width: 100%;
+    transform: inherit;
+    transform: translateY(0);
+    p {
+      color: white;
+      font-family: 'NightMachine';
+      font-weight: 600;
+      font-size: 18px;
+      width: 100%;
+      padding: 6px;
+      padding-left: 12px;
+      text-align: left;
+      line-height: 28px;
+    }
+  }
+
+  .expand {
+    overflow: hidden;
+    .inner {
+      margin-top: -800px;
+      transition: margin-top 0.3s;
+      color: rgba(75, 182, 215);
+      font-weight: 500;
+      font-size: 16px;
+      p {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+    &.open {
+      .inner {
+        min-height: 100%;
+        margin-top: 0;
+      }
+    }
+  }
+.chevronwrapper{
+  position: relative;
+  .chevron {
+    color: rgba(75, 182, 215);
+    font-size: 20px;
+    transition: 0.3s;
+    position: absolute;
+    top: -50px;
+    right: 0;
+    
+
+    &.open {
+      max-height: 100%;
+
+      transform: scaleY(1) rotateZ(180deg);
+      -moz-transform: scaleY(1) rotateZ(180deg);
+    }
+  }
+}

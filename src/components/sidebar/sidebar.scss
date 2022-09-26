@@ -1,0 +1,120 @@
+.accordion-item{
+  background-color: transparent;
+  
+}
+.accordion-item{
+
+}
+
+
+.accordion{
+height: 100%;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+
+}
+
+.accordion-header{}
+
+.accordion-body{
+  transition: margin-top 0.3s;
+  color: rgba(75, 182, 215);
+  font-weight: 500;
+  font-size: 16px;
+  
+  p {
+   
+    white-space: pre-line;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.accordion-button{
+  background-color: transparent;
+  width: 100%;
+  transform: inherit;
+  transform: translateY(0);
+  p {
+    
+    color: white;
+    font-family: 'NightMachine';
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 12px;
+    text-align: left;
+    line-height: 28px;
+  }
+
+  .accordion-button:not(.collapsed){
+   
+    
+  }
+
+
+}
+
+.accordion-collapse{
+
+  
+}
+
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(75, 182, 215, 0.2);
+}
+
+.accordion-button::after {
+  
+ background-image: url('../../assets/plussquare.png'); 
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url('../../assets/plussquare.png'); 
+
+}
+.expansion-panel {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+    transition: 0.3s;
+    
+    width: 293px;
+    height: 600px;
+    padding: 0;
+    border-radius: 12px;
+    
+    overflow: hidden;
+    background: rgba(75, 182, 215, 0.2);
+    border: 2px solid #FFFFFF;
+    border-radius: 015px 15px 15px 15px;
+
+
+    
+    @media screen and (min-width: 1921px) {    
+      width: 375px;
+      height: 880px;
+  }
+
+    button {
+
+            border: 1px solid #FFFFFF;  
+    
+      height: 40px;
+    
+      color: white;
+    
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, border 0.3s;
+    
+      line-height: 36px;
+    
+
+    
+   
+    }
+}

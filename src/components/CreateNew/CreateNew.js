@@ -5,7 +5,6 @@ import AnuraContainer from "./components/AnuraContainer";
 import expand from "../../assets/expand.png";
 import edit from "../../assets/edit.png";
 import { AnuraButton } from "./components/AnuraButton";
-
 import etherscan from "../../assets/etherscan.png";
 import { useEffect, Component } from "react";
 // import {Link} from 'react-router-dom'
@@ -16,11 +15,13 @@ export const CreateNew = ({}) => {
   const categoriesURL = "/api/v1/dropdown/categories";
   const statusesURL = "/api/v1/dropdown/statuses";
   const responsiblesURL = "/api/v1/dropdown/responsibles";
+  const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
+  s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h))
 
   //Set JSON data
   const [data, setData] = useState(
     {
-      _id: "5af712eff26b29dc5c51c60h", 
+      _id: ObjectId(), 
       title: "",
       category: "",
       status: "001",
@@ -62,22 +63,42 @@ export const CreateNew = ({}) => {
 
   }, []);
 
+  function getKeyByValue(category, value) {
+    return Object.keys(category).find(key => category[key] === value);
+  }
 
 
   function handle(e) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
-    console.log("NEW DATA:");
-    console.log(newdata);
     setData(newdata);
 
   }
 
-  function dropdownHandle(e) {
+  function descriptionHandle(e) {
     const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    console.log("NEW DATA:");
-    console.log(newdata);
+    console.log(newdata['proposalBody'][0]);
+    newdata['proposalBody'][0].bodyText = e.target.value;
+    setData(newdata);
+
+  }
+
+  function categoryHandle(e) {
+    const newdata = { ...data };
+    const newcategory = { ...category };
+    let value = e.target.value;  
+    let code = getKeyByValue(newcategory, value);
+    newdata[e.target.id] = code;
+    setData(newdata);
+
+  }
+
+  function responsibleHandle(e) {
+    const newdata = { ...data };
+    const newresponsible = { ...responsible };
+    let value = e.target.value;  
+    let code = getKeyByValue(newresponsible, value);
+    newdata[e.target.id] = code;
     setData(newdata);
 
   }
@@ -99,7 +120,7 @@ export const CreateNew = ({}) => {
   }
 
   return (
-    <div className="main">
+    <div className="main" style={{ overflow:'hidden'}}>
       <div
         className=" mainview"
         id="mainView"
@@ -133,7 +154,6 @@ export const CreateNew = ({}) => {
               >
                 <ListHeaderOne />
                 <div className="col" style={{ padding: "0.5rem 0 1rem 1rem" }}>
-                  <form onSubmit={(e) => SubmitEvent(e)}>
                     <input
                       onChange={(e) => handle(e)}
                       id="title"
@@ -156,7 +176,6 @@ export const CreateNew = ({}) => {
                       placeholder="Proposal Title"
                       type="title"
                     />
-                  </form>
                   <h1
                     style={{
                       fontFamily: "Quantico",
@@ -177,9 +196,8 @@ export const CreateNew = ({}) => {
                     />
                   </h1>
                   <select
-                    onChange={(e) => dropdownHandle(e)}
+                    onChange={(e) => categoryHandle(e)}
                     id="category"
-                    value={data.category}
                     style={{
                       background: "rgba(37, 60, 120, 0.7)",
                       textAlign: "left",
@@ -199,7 +217,6 @@ export const CreateNew = ({}) => {
                       <option>{categories}</option>
                     ))}
                   </select>
-                  <form>
                     <input
                       onChange={(e) => handle(e)}
                       id="cost"
@@ -220,7 +237,6 @@ export const CreateNew = ({}) => {
                       placeholder="ETH"
                       type="cost"
                     />
-                  </form>
 
                   <a
                     href="/"
@@ -241,6 +257,7 @@ export const CreateNew = ({}) => {
                   style={{ paddingTop: "5.5rem", paddingRight: "1.5rem" }}
                 >
                   <select
+                    value="Draft"
                     style={{
                       background: "rgba(37, 60, 120, 0.7)",
                       textAlign: "left",
@@ -260,9 +277,8 @@ export const CreateNew = ({}) => {
                     ))}
                   </select>
                   <select
-                    onChange={(e) => handle(e)}
+                    onChange={(e) => responsibleHandle(e)}
                     id="responsible"
-                    value={data.responsible}
                     style={{
                       background: "rgba(37, 60, 120, 0.7)",
                       textAlign: "left",
@@ -277,7 +293,7 @@ export const CreateNew = ({}) => {
                     }}
                   >
                     <option>Select Owner</option>
-                    {Object.keys(responsible).map((responsibles) => (
+                    {Object.values(responsible).map((responsibles) => (
                       <option>{responsibles}</option>
                     ))}
                   </select>
@@ -303,9 +319,9 @@ export const CreateNew = ({}) => {
               >
                 <div>
                   <input
-                    onChange={(e) => handle(e)}
+                    onChange={(e) => descriptionHandle(e)}
                     id="bodyText"
-                    value={data.bodyText}
+                    value={data.proposalBody.bodyText}
                     style={{
                       background: "transparent",
                       cursor: "pointer",

@@ -10,7 +10,7 @@ import Stack from 'react-bootstrap/Stack';
 import Logo from "../../assets/logo.png";
 import {CreateNew} from '../CreateNew/CreateNew';
 import { Routes,Route } from 'react-router-dom';
-
+import {Discourse} from '../Discourse/Discourse';
 function home(props) {
 
 
@@ -30,6 +30,7 @@ function home(props) {
         <Col md={10}>
           {/* <Maincontent/> */}
           <CreateNew />
+          {/* <Discourse /> */}
     </Col>
       </Row>
 

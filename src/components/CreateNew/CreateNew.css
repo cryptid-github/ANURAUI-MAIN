@@ -69,7 +69,9 @@
   
 }
 
-
+.center {
+  align-items: center;
+}
 
 .header h1 {
   font-family: 'Night Machine';

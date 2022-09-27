@@ -9,8 +9,9 @@ import Maincontent from '../maincontent/maincontent'
 import Stack from 'react-bootstrap/Stack';
 import Logo from "../../assets/logo.png";
 import {CreateNew} from '../CreateNew/CreateNew';
+import { Routes,Route } from 'react-router-dom';
 
-function home() {
+function home(props) {
 
 
   return (
@@ -26,7 +27,10 @@ function home() {
 
       <Row>
         <Col className='Side' md={2}><Sidebar /></Col>
-        <Col md={10}><CreateNew/></Col>
+        <Col md={10}>
+          {/* <Maincontent/> */}
+          <CreateNew />
+    </Col>
       </Row>
 
 

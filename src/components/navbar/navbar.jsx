@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Dropdown from 'react-bootstrap/Dropdown';
+
 function navbar(){
 return(
 
@@ -13,7 +14,7 @@ return(
     <Col><a href='/' ><button className='Nav2 NavFont'>HEROES</button></a></Col>
     <Col><a href='/' ><button className='Nav3 NavFont'>LANDS</button></a></Col>
     <Col><a href='/' ><button className='Nav4 NavFont'>QUESTING</button></a></Col>
-    <Col><a href='/' ><button className='Nav5 NavFont'>GOLDEN COUNCIL</button></a></Col>
+    <Col><a href='/'><button className='Nav5 NavFont'>GOLDEN COUNCIL</button></a></Col>
     <Col>  
      <Dropdown>
       <Dropdown.Toggle className='Nav6 NavFont' >

@@ -31,7 +31,7 @@ export const CreateNew = ({}) => {
       proposalBody: [{
         bodyVersion: "00001B",
         bodyAuthor: "0xD7ed008295E7d….Bb9BE",
-        bodyText: "Some text"
+        bodyText: ""
         }]
     }
   );
@@ -112,9 +112,11 @@ export const CreateNew = ({}) => {
         <div className='header'>
           <Header 
           />
-          <AnuraButton onClick={onSubmit} className="item2">CANCEL</AnuraButton>
-          <AnuraButton onClick={onSubmit} className="item2">SAVE</AnuraButton>
-          <AnuraButton onClick={onSubmit} className="item3">SUBMIT</AnuraButton>
+          <div style={{ marginRight: '2rem'}}>
+            <AnuraButton onClick={onSubmit} className="item2">SAVE</AnuraButton>
+            <AnuraButton onClick={onSubmit} className="item3">SUBMIT</AnuraButton>
+          </div>
+
         </div>
         <AnuraContainer>
           <div className="col leftPanel ">
@@ -177,7 +179,7 @@ export const CreateNew = ({}) => {
                   <select
                     onChange={(e) => dropdownHandle(e)}
                     id="category"
-                    value={key.value}
+                    value={data.category}
                     style={{
                       background: "rgba(37, 60, 120, 0.7)",
                       textAlign: "left",
@@ -193,7 +195,7 @@ export const CreateNew = ({}) => {
                     }}
                   >
                     <option>Select Category</option>
-                    {Object.keys(category).map((categories) => (
+                    {Object.values(category).map((categories) => (
                       <option>{categories}</option>
                     ))}
                   </select>
@@ -292,7 +294,7 @@ export const CreateNew = ({}) => {
                 id="detail"
                 style={{
                   background: "rgba(0, 0, 0, 0.7)",
-                  height: "82%",
+                  height: '82%',
                   border: "1px solid #FFFFFF",
                   borderRadius: "3px",
                   padding: "0 2rem",
@@ -403,9 +405,10 @@ function CouncilFeedback() {
           border: "1px solid #FFFFFF",
           borderRadius: "3px",
           padding: "0 2rem",
-          height: "370px",
+          flex: '1 1 auto',
           marginBottom: "2rem",
-          marginTop: '1rem'
+          marginTop: '1rem',
+          height: '350px'
         }}
       >
         <p

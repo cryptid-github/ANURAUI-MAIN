@@ -11,7 +11,7 @@ import Logo from "../../assets/logo.png";
 import {CreateNew} from '../CreateNew/CreateNew';
 import { Routes,Route } from 'react-router-dom';
 import {Discourse} from '../Discourse/Discourse';
-function home(props) {
+function home() {
 
 
   return (
